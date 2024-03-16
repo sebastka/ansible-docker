@@ -1,8 +1,7 @@
 ---
 # Configure Docker host
 
-# Enable IP forwarding
-- name: Set sysctl values
+- name: Enable IP forwarding
   ansible.posix.sysctl:
     name: "{{ item.key }}"
     value: "{{ item.value }}"
@@ -13,4 +12,11 @@
     - { key: 'net.ipv4.ip_forward', value: 1 }
     - { key: 'net.ipv4.conf.all.forwarding', value: 1 }
     - { key: 'net.ipv6.conf.all.forwarding', value: 1 }
+  become: yes
+
+- name: Load IPVS kernel module
+  community.general.modprobe:
+    name: ip_vs
+    state: present
+    persistent: present
   become: yes
