@@ -1,7 +1,7 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+Install docker on Debian.
 
 Requirements
 ------------

@@ -1,2 +1,10 @@
 ---
 # tasks file for docker
+
+- name: Include install process
+  include_tasks: install.yml
+  tags: install
+
+- name: Include configuration process
+  include_tasks: configure.yml
+  tags: configure
